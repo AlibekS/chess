@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+# Рабочая база (пересобирается из backend/data автоматически)
+backend/var/
+# Node
+node_modules/
+frontend/dist/
+# Копируется из node_modules скриптом copy-assets
+frontend/public/vendor/

@@ -1,0 +1,12 @@
+# Запуск: docker compose up --build  →  http://localhost:8000
+services:
+  coach:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - coach-data:/data   # профиль, история партий, индекс позиций
+    restart: unless-stopped
+
+volumes:
+  coach-data:

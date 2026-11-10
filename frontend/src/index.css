@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* Палитра: тёмная тема в духе современного шахматного софта */
+@theme {
+  --color-bg: #1e1e1e;
+  --color-panel: #2a2926;
+  --color-panel-2: #35332f;
+  --color-accent: #81b64c;
+  --color-accent-dark: #5d9948;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: #e7e5e1;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ------------------------------- Кнопки ---------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .55rem 1rem; border-radius: .6rem; font-weight: 600; font-size: .9rem;
+  background: var(--color-panel-2); color: #e7e5e1; cursor: pointer;
+  transition: background .15s, transform .05s;
+}
+.btn:hover:not(:disabled) { background: #45423d; }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: #16210c; box-shadow: 0 3px 0 var(--color-accent-dark); }
+.btn-primary:hover:not(:disabled) { background: #93c95b; }
+.btn-danger { background: #6b2a25; }
+.btn-danger:hover:not(:disabled) { background: #853229; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: .3rem; padding: .25rem .5rem;
+  border-radius: .4rem; color: #a8a5a0; cursor: pointer;
+}
+.btn-ghost:hover { background: rgba(255,255,255,.08); color: #e7e5e1; }
+
+/* Облачко диалога: «хвостик» в сторону аватара */
+.speech-bubble::before {
+  content: ""; position: absolute; left: -8px; top: 26px;
+  border: 8px solid transparent; border-right-color: #f5f5f5; border-left: 0;
+}
+
+/* -------------------------- Доска cm-chessboard -------------------------- */
+.board-host { aspect-ratio: 1; }
+.cm-chessboard.green .board .square.white { fill: #ebecd0; }
+.cm-chessboard.green .board .square.black { fill: #739552; }
+.cm-chessboard.green .coordinates .coordinate { font-weight: 600; }
+.cm-chessboard.green .coordinates .coordinate.black { fill: #ebecd0; }
+.cm-chessboard.green .coordinates .coordinate.white { fill: #739552; }
+.cm-chessboard .markers .marker.marker-last-move { fill: #f5f56b; opacity: .5; }
+.cm-chessboard .markers .marker.marker-hint { stroke: #ffa459; stroke-width: 3px; opacity: .95; }
+.cm-chessboard .board-host svg, .board-host svg { border-radius: 6px; }
+
+/* --------------------------- Анимации аватара ---------------------------- */
+.av-breathe { animation: av-breathe 4.2s ease-in-out infinite; transform-origin: 120px 260px; }
+@keyframes av-breathe { 0%, 100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-1.5px) scaleY(1.008); } }
+
+.av-blink { animation: av-blink 5.5s infinite; }
+@keyframes av-blink { 0%, 94%, 100% { transform: scaleY(1); } 96.5% { transform: scaleY(.08); } }
+
+.av-talk-mouth { animation: av-talk .32s ease-in-out infinite alternate; transform-origin: 120px 149px; }
+@keyframes av-talk { from { transform: scaleY(.25); } to { transform: scaleY(1.35); } }
+
+.av-gesture { animation: av-gesture .9s ease-in-out infinite alternate; }
+@keyframes av-gesture { from { transform: rotate(-7deg); } to { transform: rotate(6deg) translateY(-3px); } }
+
+.av-nod { animation: av-nod .7s ease-in-out 2; }
+@keyframes av-nod { 0%, 100% { transform: rotate(0) translateY(0); } 50% { transform: translateY(4px) rotate(1.5deg); } }
+
+.av-shake { animation: av-shake .9s ease-in-out 2; }
+@keyframes av-shake { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-4deg); } 75% { transform: rotate(4deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .av-breathe, .av-blink, .av-talk-mouth, .av-gesture, .av-nod, .av-shake { animation: none; }
+}
