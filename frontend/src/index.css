@@ -76,3 +76,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .av-breathe, .av-blink, .av-talk-mouth, .av-gesture, .av-nod, .av-shake { animation: none; }
 }
+
+/* «Аура» за спиной тренера медленно пульсирует */
+.av-aura { animation: av-aura 5s ease-in-out infinite; }
+@keyframes av-aura { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .av-aura { animation: none; } }

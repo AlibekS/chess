@@ -67,7 +67,7 @@ export default function Coach({ coach, thinking = false, children }) {
   return (
     <div className="flex gap-3 items-start">
       <div className="shrink-0">
-        <FischerAvatar mood={avatarMood} size={116} />
+        <FischerAvatar mood={avatarMood} size={132} />
         <div className="text-center text-[11px] text-neutral-400 mt-1">Бобби Фишер</div>
       </div>
       <div className="flex-1 min-w-0">
